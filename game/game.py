@@ -9,14 +9,23 @@ class Game:
 
     def handle_events(self):
         for event in pygame.event.get():
-            print(event.type)
+            evt_name = pygame.event.event_name(event.type)
 
             if event.type == pygame.QUIT:
                 self.running = False
 
-            if event.type == pygame.KEYDOWN:
+
+            if event.type in (pygame.KEYDOWN, pygame.KEYUP):
+                evt_name = pygame.key.name(event.key)
+                print(f"{evt_name}: {event.key}")
+
+            elif event.type == pygame.MOUSEMOTION:
+                print(f"{evt_name}: {event.pos}")
+
+            elif event.type in (pygame.MOUSEBUTTONDOWN, pygame.MOUSEBUTTONUP):
+                print(f"{evt_name}: {event.button} at {event.pos}")
+    
                 
-                self.running = False
 
     def update(self):
         pass

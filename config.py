@@ -3,3 +3,5 @@ FPS = 60
 
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 800
+
+Platform_color = (139, 69, 19)

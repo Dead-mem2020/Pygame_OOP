@@ -1,3 +1,4 @@
+from os import name
 import pygame
 from config import *
 
@@ -40,4 +41,3 @@ class Game:
             self.update()
             self.draw()
             self.clock.tick(FPS)
-

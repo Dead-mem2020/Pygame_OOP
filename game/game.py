@@ -1,3 +1,4 @@
+from os import name
 import pygame
 from config import *
 

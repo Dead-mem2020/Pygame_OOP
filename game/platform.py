@@ -10,3 +10,4 @@ class platform(pygame.sprite.Sprite):
         self.x = x
         self.y = y
         
+        

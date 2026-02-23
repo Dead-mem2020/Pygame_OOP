@@ -10,4 +10,6 @@ PLAYER_COLOUR = (255, 0, 69)
 PLAYER_SPEED = 5
 JUMP_POWER = 15
 
+GRAVITY = 0.8
+
 Platform_color = (139, 69, 19)

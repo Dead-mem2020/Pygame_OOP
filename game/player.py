@@ -12,7 +12,7 @@ class Player(pygame.sprite.Sprite):
             for ext in ["png", "jpg", "jpeg", "webp"]:
                 try:
                     image_path = os.path.join("img", f"(name).(ext)")
-                    self.image = pygame.image.load(image_path).convert_alpha
+                    self.image = pygame.image.load(image_path).convert_alpha()
                     self.image = pygame.transform.scale(self.image, (PLAYER_WIDTH, PLAYER_HEIGHT))
                     print(f"Načten obrázek hráče: {image_path}")
                     image_loaded = True
@@ -42,6 +42,9 @@ class Player(pygame.sprite.Sprite):
 
         if keys[pygame.K_RIGHT]:
             self.velocity_x = PLAYER_SPEED
+
+        if keys[pygame.K_LEFT]:
+            self.velocity_x = -PLAYER_SPEED
 
         if keys[pygame.K_SPACE] and self.on_ground:
             self.velocity_y = -JUMP_POWER
@@ -77,4 +80,3 @@ class Player(pygame.sprite.Sprite):
     
     def Draw(self, screen):
         screen.blit(self.image, self.rect)
-

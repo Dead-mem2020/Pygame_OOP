@@ -1,7 +1,7 @@
 import pygame
 from config import *
 
-class platform(pygame.sprite.Sprite):
+class Platform(pygame.sprite.Sprite):
     """
     Třída platform¨
     Sprite - základní herní objekt v Pygamu, metody .image, .rect automaticky

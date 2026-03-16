@@ -8,10 +8,10 @@ class Player(pygame.sprite.Sprite):
 
         image_loaded = False
 
-        for name in ["Gatto", "cat", "player", "kocka"]:
+        for name in ["gatto", "cat", "player", "kocka"]:
             for ext in ["png", "jpg", "jpeg", "webp"]:
                 try:
-                    image_path = os.path.join("img", f"(name).(ext)")
+                    image_path = os.path.join("img", f"{name}.{ext}")
                     self.image = pygame.image.load(image_path).convert_alpha()
                     self.image = pygame.transform.scale(self.image, (PLAYER_WIDTH, PLAYER_HEIGHT))
                     print(f"Načten obrázek hráče: {image_path}")
@@ -24,7 +24,7 @@ class Player(pygame.sprite.Sprite):
                     continue
 
         if not image_loaded:
-            self.image = pygame([PLAYER_WIDTH, PLAYER_HEIGHT])
+            self.image = pygame.Surface((PLAYER_WIDTH, PLAYER_HEIGHT))
             self.image.fill(PLAYER_COLOUR)
 
         self.rect = self.image.get_rect()
@@ -57,7 +57,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += self.velocity_x
         if self.rect.left < 0:
             self.rect.left = 0
-        if self.rect.right < SCREEN_WIDTH:
+        if self.rect.right > SCREEN_WIDTH:
             self.rect.right = SCREEN_WIDTH
 
         self.rect.y += self.velocity_y
@@ -68,7 +68,7 @@ class Player(pygame.sprite.Sprite):
             if self.rect.colliderect(platform.rect):
                 if self.velocity_y > 0:
                     self.rect.bottom = platform.rect.top
-                    self.velocity_y < 0
+                    self.velocity_y = 0
                     self.on_ground = True
                 elif self.velocity_y < 0:
                     self.rect.top = platform.rect.bottom
@@ -78,5 +78,5 @@ class Player(pygame.sprite.Sprite):
             return True
         return False
     
-    def Draw(self, screen):
+    def draw(self, screen):
         screen.blit(self.image, self.rect)
